@@ -33,12 +33,25 @@ const messageEl = document.querySelector('#message');
 
 
 /*-------------------------------- Functions --------------------------------*/
+function render(){
+    console.log("render function called");
+}
 
+function init() {
+    console.log("init function called");
+
+    board =['', '', '', '', '', '','','','']
+    turn = 'X';
+    winner = false;
+    tie = false;
+
+    render();
+}
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+init();
 
 
 
