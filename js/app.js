@@ -76,10 +76,44 @@ function init() {
     render();
 }
 
+init();
+function handleClick(event) {
+  const squareIndex = event.target.id; 
+  if (board[squareIndex] === 'X' || board[squareIndex] === 'O' || winner) return;
+   placePiece(squareIndex);
+  checkForWinner();
+  checkForTie();
+  switchPlayerTurn();
+  render();
+}
+function placePiece(index) {
+  board[index] = turn;
+}
+function checkForWinner() {
+  winningCombos.forEach((combo) => {
+    const [a, b, c] = combo;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      winner = true;
+    }
+  });
+} 
+function checkForTie() {
+  if (winner) return;
+  if (!board.includes('')) tie = true;
+} 
+function switchPlayerTurn() {
+  if (winner) return;
+  turn = turn === 'X' ? 'O' : 'X';
+}
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-init();
+squareEls.forEach((square) => {
+  square.addEventListener('click', handleClick);
+});
+
+
+
 
 
 
