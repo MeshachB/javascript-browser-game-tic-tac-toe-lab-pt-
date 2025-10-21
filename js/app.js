@@ -34,8 +34,26 @@ const messageEl = document.querySelector('#message');
 
 /*-------------------------------- Functions --------------------------------*/
 function render(){
-    console.log("render function called");
+    updateBoard();
+    updateMessage()  
+
 }
+function updateBoard() {
+    board.forEach((cell, idx)=> {
+        squareEls[idx].textContent = cell;
+    });
+}
+
+function updateMessage(){
+    if (!winner && !tie){
+    messageEl.textContent = `It's ${turn}'s turn!`;    
+    } else if (!winner && tie) {
+      messageEl.textContent ="It's a tie!";
+    } else {
+       messageEl.textContent = `Congrats ${turn}! You win!`;  
+    }
+}
+
 
 function init() {
     console.log("init function called");
