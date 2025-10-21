@@ -40,6 +40,7 @@ let tie;
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll('.sqr'); 
 const messageEl = document.querySelector('#message');
+const resetBtn = document.querySelector('#reset');
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -111,8 +112,7 @@ function switchPlayerTurn() {
 squareEls.forEach((square) => {
   square.addEventListener('click', handleClick);
 });
-
-
+resetBtn.addEventListener('click', init);
 
 
 
